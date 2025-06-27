@@ -14,8 +14,8 @@
  */
 
 var debug = require('debug')('express:view');
-var path = require('path');
-var fs = require('fs');
+var path = require('node:path');
+var fs = require('node:fs');
 
 /**
  * Module variables.
@@ -74,7 +74,7 @@ function View(name, options) {
 
   if (!opts.engines[this.ext]) {
     // load engine
-    var mod = this.ext.substr(1)
+    var mod = this.ext.slice(1)
     debug('require "%s"', mod)
 
     // default engine export
@@ -131,8 +131,31 @@ View.prototype.lookup = function lookup(name) {
  */
 
 View.prototype.render = function render(options, callback) {
+  var sync = true;
+
   debug('render "%s"', this.path);
-  this.engine(this.path, options, callback);
+
+  // render, normalizing sync callbacks
+  this.engine(this.path, options, function onRender() {
+    if (!sync) {
+      return callback.apply(this, arguments);
+    }
+
+    // copy arguments
+    var args = new Array(arguments.length);
+    var cntx = this;
+
+    for (var i = 0; i < arguments.length; i++) {
+      args[i] = arguments[i];
+    }
+
+    // force callback to be async
+    return process.nextTick(function renderTick() {
+      return callback.apply(cntx, args);
+    });
+  });
+
+  sync = false;
 };
 
 /**

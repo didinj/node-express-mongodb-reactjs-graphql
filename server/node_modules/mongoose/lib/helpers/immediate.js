@@ -7,6 +7,10 @@
 
 'use strict';
 
+const nextTick = typeof process !== 'undefined' && typeof process.nextTick === 'function' ?
+  process.nextTick.bind(process) :
+  cb => setTimeout(cb, 0); // Fallback for browser build
+
 module.exports = function immediate(cb) {
-  return process.nextTick(cb);
+  return nextTick(cb);
 };

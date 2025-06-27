@@ -1,3 +1,70 @@
+3.0.0 / 2024-07-25
+==================
+
+  * deps: iconv-lite@0.6.3
+    - Fix HKSCS encoding to prefer Big5 codes
+    - Fix minor issue in UTF-32 decoder's endianness detection code
+    - Update 'gb18030' encoding to :2005 edition
+
+3.0.0-beta.1 / 2023-02-21
+=========================
+
+  * Change TypeScript argument to `NodeJS.ReadableStream` interface
+  * Drop support for Node.js 0.8
+  * deps: iconv-lite@0.5.2
+    - Add encoding cp720
+    - Add encoding UTF-32
+
+2.5.2 / 2023-02-21
+==================
+
+  * Fix error message for non-stream argument
+
+2.5.1 / 2022-02-28
+==================
+
+  * Fix error on early async hooks implementations
+
+2.5.0 / 2022-02-21
+==================
+
+  * Prevent loss of async hooks context
+  * Prevent hanging when stream is not readable
+  * deps: http-errors@2.0.0
+    - deps: depd@2.0.0
+    - deps: statuses@2.0.1
+
+2.4.3 / 2022-02-14
+==================
+
+  * deps: bytes@3.1.2
+
+2.4.2 / 2021-11-16
+==================
+
+  * deps: bytes@3.1.1
+  * deps: http-errors@1.8.1
+    - deps: setprototypeof@1.2.0
+    - deps: toidentifier@1.0.1
+
+2.4.1 / 2019-06-25
+==================
+
+  * deps: http-errors@1.7.3
+    - deps: inherits@2.0.4
+
+2.4.0 / 2019-04-17
+==================
+
+  * deps: bytes@3.1.0
+    - Add petabyte (`pb`) support
+  * deps: http-errors@1.7.2
+    - Set constructor name when possible
+    - deps: setprototypeof@1.1.1
+    - deps: statuses@'>= 1.5.0 < 2'
+  * deps: iconv-lite@0.4.24
+    - Added encoding MIK
+
 2.3.3 / 2018-05-08
 ==================
 
@@ -13,7 +80,7 @@
 ==================
 
   * deps: iconv-lite@0.4.19
-    - Fix ISO-8859-1regression
+    - Fix ISO-8859-1 regression
     - Update Windows-1255
 
 2.3.1 / 2017-09-07

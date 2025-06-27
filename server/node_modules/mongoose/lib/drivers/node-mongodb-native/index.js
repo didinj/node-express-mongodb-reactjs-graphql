@@ -4,8 +4,7 @@
 
 'use strict';
 
-exports.Binary = require('./binary');
+exports.BulkWriteResult = require('./bulkWriteResult');
 exports.Collection = require('./collection');
-exports.Decimal128 = require('./decimal128');
-exports.ObjectId = require('./objectid');
-exports.ReadPreference = require('./ReadPreference');
+exports.Connection = require('./connection');
+exports.ClientEncryption = require('mongodb').ClientEncryption;
